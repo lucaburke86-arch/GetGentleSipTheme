@@ -1,0 +1,45 @@
+<div class="section">
+  <div class="page-width">
+    <div class="collection-head">
+      <h1>Search</h1>
+      <form action="{{ routes.search_url }}" method="get" role="search"
+            style="max-width:480px;margin:14px auto 0;display:flex;gap:8px;">
+        <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search products"
+               aria-label="Search"
+               style="flex:1;padding:13px;border:1.5px solid #ccc;border-radius:3px;font-family:var(--font-body);">
+        <button type="submit" class="btn">Search</button>
+      </form>
+    </div>
+
+    {%- if search.performed -%}
+      {%- if search.results.size > 0 -%}
+        <p style="text-align:center;margin-bottom:24px;">{{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %} for "{{ search.terms }}"</p>
+        {%- paginate search.results by 24 -%}
+          <div class="product-grid">
+            {%- for item in search.results -%}
+              {%- if item.object_type == 'product' -%}
+                {% render 'product-card', product: item, index: forloop.index0 %}
+              {%- else -%}
+                <div class="card">
+                  <div class="card__info">
+                    <a href="{{ item.url }}"><div class="card__title">{{ item.title }}</div></a>
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          {% render 'pagination', paginate: paginate %}
+        {%- endpaginate -%}
+      {%- else -%}
+        <div class="empty-state"><p>No results found for "{{ search.terms }}".</p></div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Search",
+  "settings": []
+}
+{% endschema %}

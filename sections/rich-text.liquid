@@ -1,0 +1,33 @@
+<div class="section">
+  <div class="page-width reveal" style="max-width:760px;text-align:{{ section.settings.alignment }};">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="eyebrow {% if section.settings.alignment == 'center' %}eyebrow--center{% endif %}">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="rte" style="font-size:1.06rem;opacity:.8;">{{ section.settings.text }}</div>
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link }}" class="btn" style="margin-top:18px;">{{ section.settings.button_label }}</a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Rich text",
+  "settings": [
+    {
+      "type": "select", "id": "alignment", "label": "Alignment", "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ]
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our promise" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Packed with care, shipped with speed" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Every bottle is packed and shipped by us, by hand. Questions? We're always here to help.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Rich text" }]
+}
+{% endschema %}

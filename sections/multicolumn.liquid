@@ -1,0 +1,61 @@
+<div class="section section--cream">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <div class="section__head reveal">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow eyebrow--center">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        {%- if section.settings.subheading != blank -%}<p>{{ section.settings.subheading }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+    <div class="multicolumn__grid">
+      {%- for block in section.blocks -%}
+        <div class="multicolumn__item reveal" style="transition-delay:{{ forloop.index0 | times: 90 }}ms" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <div class="multicolumn__icon">
+              <img src="{{ block.settings.image | image_url: width: 120 }}" alt="" style="width:30px;height:30px;object-fit:contain;">
+            </div>
+          {%- elsif block.settings.icon != blank -%}
+            <div class="multicolumn__icon">{{ block.settings.icon }}</div>
+          {%- endif -%}
+          <h3>{{ block.settings.heading }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Benefits columns",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why GetGentleSip" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Built for comfortable sipping" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Every detail designed around the way you drink." }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Emoji icon", "info": "Or use an image below", "default": "🌡️" },
+        { "type": "image_picker", "id": "image", "label": "Image icon (optional)" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Feature" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Describe this benefit." }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Benefits columns",
+      "blocks": [
+        { "type": "column", "settings": { "icon": "🌡️", "heading": "Live temperature display", "text": "See your drink's exact temperature at a glance — no guessing." } },
+        { "type": "column", "settings": { "icon": "🦷", "heading": "Sensitive-teeth friendly", "text": "Catch drinks too hot or cold before they ever reach your teeth." } },
+        { "type": "column", "settings": { "icon": "✨", "heading": "Sip in style", "text": "Sleek matte black or clean white finishes that turn heads." } },
+        { "type": "column", "settings": { "icon": "🚚", "heading": "Worldwide shipping", "text": "Carefully packed and shipped fast — US and international." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

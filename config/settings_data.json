@@ -1,0 +1,33 @@
+{
+  "current": {
+    "logo_width": 150,
+    "color_accent": "#C9A14A",
+    "color_text": "#1A1A1A",
+    "color_bg": "#FFFFFF",
+    "color_footer_bg": "#111111",
+    "color_footer_text": "#F2F2F2",
+    "type_header_font": "montserrat_n5",
+    "type_body_font": "assistant_n4",
+    "show_vendor": false,
+    "card_show_secondary_image": true,
+    "show_payment_icons": true,
+    "social_instagram": "",
+    "social_tiktok": "",
+    "social_facebook": ""
+  },
+  "presets": {
+    "GentleSip": {
+      "logo_width": 150,
+      "color_accent": "#C9A14A",
+      "color_text": "#1A1A1A",
+      "color_bg": "#FFFFFF",
+      "color_footer_bg": "#111111",
+      "color_footer_text": "#F2F2F2",
+      "type_header_font": "montserrat_n5",
+      "type_body_font": "assistant_n4",
+      "show_vendor": false,
+      "card_show_secondary_image": true,
+      "show_payment_icons": true
+    }
+  }
+}

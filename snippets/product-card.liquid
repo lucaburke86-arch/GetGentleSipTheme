@@ -1,0 +1,45 @@
+{%- comment -%} Renders a product card. Expects: product, optional index {%- endcomment -%}
+{%- assign card_delay = index | default: 0 | times: 65 -%}
+<div class="card reveal" style="transition-delay:{{ card_delay }}ms">
+  <a href="{{ product.url }}" class="card__media" aria-label="{{ product.title | escape }}">
+    {%- unless product.available -%}
+      <span class="card__badge card__badge--sold">Sold out</span>
+    {%- else -%}
+      {%- if product.compare_at_price > product.price -%}
+        <span class="card__badge">Sale</span>
+      {%- endif -%}
+    {%- endunless -%}
+
+    {%- if product.featured_image -%}
+      <img class="card__media--first"
+           src="{{ product.featured_image | image_url: width: 700 }}"
+           alt="{{ product.featured_image.alt | default: product.title | escape }}"
+           width="700" height="875" loading="lazy">
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'card__media--first' }}
+    {%- endif -%}
+
+    {%- if settings.card_show_secondary_image and product.images[1] -%}
+      <img class="card__media--second"
+           src="{{ product.images[1] | image_url: width: 700 }}"
+           alt="" width="700" height="875" loading="lazy">
+    {%- endif -%}
+
+    <span class="card__quick">View product</span>
+  </a>
+
+  <div class="card__info">
+    {%- if settings.show_vendor and product.vendor != blank -%}
+      <div class="card__vendor">{{ product.vendor }}</div>
+    {%- endif -%}
+    <a href="{{ product.url }}"><div class="card__title">{{ product.title }}</div></a>
+    <div class="card__price">
+      {%- if product.compare_at_price > product.price -%}
+        <span class="price__sale">{{ product.price | money }}</span>
+        <span class="price__compare">{{ product.compare_at_price | money }}</span>
+      {%- else -%}
+        {{ product.price | money }}
+      {%- endif -%}
+    </div>
+  </div>
+</div>

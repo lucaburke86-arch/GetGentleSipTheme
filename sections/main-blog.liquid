@@ -1,0 +1,32 @@
+<div class="section">
+  <div class="page-width">
+    <div class="collection-head"><h1>{{ blog.title }}</h1></div>
+    {%- paginate blog.articles by 12 -%}
+      <div class="product-grid">
+        {%- for article in blog.articles -%}
+          <div class="card">
+            {%- if article.image -%}
+              <a href="{{ article.url }}" class="card__media">
+                <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title | escape }}"
+                     width="600" height="600" loading="lazy">
+              </a>
+            {%- endif -%}
+            <div class="card__info" style="text-align:left;">
+              <div class="card__vendor">{{ article.published_at | date: '%b %d, %Y' }}</div>
+              <a href="{{ article.url }}"><div class="card__title">{{ article.title }}</div></a>
+              <p style="font-size:.9rem;color:#666;">{{ article.excerpt_or_content | strip_html | truncatewords: 22 }}</p>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Blog posts",
+  "settings": []
+}
+{% endschema %}

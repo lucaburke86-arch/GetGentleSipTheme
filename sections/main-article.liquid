@@ -1,0 +1,32 @@
+<div class="section">
+  <article class="page-width" style="max-width:760px;">
+    <div class="collection-head">
+      <div class="card__vendor">{{ article.published_at | date: '%B %d, %Y' }}</div>
+      <h1>{{ article.title }}</h1>
+    </div>
+    {%- if article.image -%}
+      <img src="{{ article.image | image_url: width: 1400 }}" alt="{{ article.title | escape }}"
+           style="border-radius:6px;margin-bottom:24px;" width="1400" height="800">
+    {%- endif -%}
+    <div class="rte">{{ article.content }}</div>
+
+    {%- if blog.comments_enabled? -%}
+      <div style="margin-top:40px;border-top:1px solid #eee;padding-top:24px;">
+        <h2 style="font-size:1.2rem;">Comments</h2>
+        {%- for comment in article.comments -%}
+          <div style="margin-bottom:16px;">
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.content }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </article>
+</div>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": []
+}
+{% endschema %}

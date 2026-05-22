@@ -1,0 +1,117 @@
+<div class="section">
+  <div class="page-width">
+    <div class="product">
+
+      {%- comment -%} ---- Gallery ---- {%- endcomment -%}
+      <div class="product__media">
+        <div class="product__gallery-main">
+          {%- if product.featured_image -%}
+            <img data-gallery-main
+                 src="{{ product.featured_image | image_url: width: 1200 }}"
+                 alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                 width="1200" height="1200">
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag }}
+          {%- endif -%}
+        </div>
+        {%- if product.images.size > 1 -%}
+          <div class="product__thumbs">
+            {%- for image in product.images -%}
+              <button type="button"
+                      class="product__thumb {% if forloop.first %}is-active{% endif %}"
+                      data-gallery-thumb
+                      data-full="{{ image | image_url: width: 1200 }}"
+                      aria-label="View image {{ forloop.index }}">
+                <img src="{{ image | image_url: width: 200 }}" alt="" width="200" height="200" loading="lazy">
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} ---- Details ---- {%- endcomment -%}
+      <div class="product__details">
+        {%- if product.vendor != blank and settings.show_vendor -%}
+          <div class="product__vendor">{{ product.vendor }}</div>
+        {%- endif -%}
+        <h1 class="product__title">{{ product.title }}</h1>
+
+        {%- assign current_variant = product.selected_or_first_available_variant -%}
+        <div class="product__price">
+          <span data-product-price>{{ current_variant.price | money }}</span>
+          <span class="price__compare" data-product-compare
+            {% unless current_variant.compare_at_price > current_variant.price %}hidden{% endunless %}>
+            {{ current_variant.compare_at_price | money }}
+          </span>
+        </div>
+
+        <script type="application/json" data-variant-json>
+          {{ product.variants | json }}
+        </script>
+
+        {%- form 'product', product, id: 'ProductForm', class: 'product__form' -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}">
+
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div class="product__option">
+                <span class="product__option-label">{{ option.name }}</span>
+                <div class="product__swatches">
+                  {%- for value in option.values -%}
+                    <label class="product__swatch {% if option.selected_value == value %}is-selected{% endif %}">
+                      <input type="radio"
+                             name="option-{{ forloop.parentloop.index0 }}"
+                             value="{{ value | escape }}"
+                             data-option-index="{{ forloop.parentloop.index0 }}"
+                             {% if option.selected_value == value %}checked{% endif %}>
+                      {{ value }}
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          <div class="product__qty-row">
+            <div class="qty">
+              <button type="button" data-step="down" aria-label="Decrease quantity">&minus;</button>
+              <input type="number" name="quantity" value="1" min="1" aria-label="Quantity">
+              <button type="button" data-step="up" aria-label="Increase quantity">&plus;</button>
+            </div>
+          </div>
+
+          <button type="submit" name="add" data-atc
+                  class="btn btn--lg btn--full product__atc"
+                  {% unless current_variant.available %}disabled{% endunless %}>
+            {% if current_variant.available %}Add to cart{% else %}Sold out{% endif %}
+          </button>
+
+          {%- if additional_checkout_buttons -%}
+            <div style="margin-top:10px;">{{ content_for_additional_checkout_buttons }}</div>
+          {%- endif -%}
+        {%- endform -%}
+
+        <div class="product__trust">
+          <span>✓ Ships worldwide</span>
+          <span>✓ Packed &amp; shipped by us</span>
+          <span>✓ Pay in 4 available</span>
+        </div>
+
+        {%- if product.description != blank -%}
+          <div class="product__description rte">
+            <h2>Description</h2>
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product page",
+  "settings": []
+}
+{% endschema %}

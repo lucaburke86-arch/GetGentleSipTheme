@@ -1,0 +1,38 @@
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {%- for copy in (1..2) -%}
+      {%- for block in section.blocks -%}
+        <div class="marquee__item" {% if forloop.parentloop.first %}{{ block.shopify_attributes }}{% endif %}>
+          <span class="marquee__star">&#10022;</span>{{ block.settings.text }}
+        </div>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Scrolling marquee",
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Phrase",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Phrase", "default": "Sip in style" }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Scrolling marquee",
+      "blocks": [
+        { "type": "text", "settings": { "text": "Live temperature display" } },
+        { "type": "text", "settings": { "text": "Sensitive teeth approved" } },
+        { "type": "text", "settings": { "text": "Sip in style" } },
+        { "type": "text", "settings": { "text": "Worldwide shipping" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
