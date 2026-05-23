@@ -3,7 +3,7 @@
     <h1>Your cart</h1>
 
     {%- if cart.item_count > 0 -%}
-      {%- form 'cart', class: 'cart-form' -%}
+      {%- form 'cart', cart, class: 'cart-form' -%}
         {%- for item in cart.items -%}
           <div class="cart__row">
             <a href="{{ item.url }}">
