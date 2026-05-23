@@ -297,7 +297,9 @@ p{margin:0 0 1em;}
    Product grid + cards
    ==================================================================== */
 .product-grid{
-  display:grid;gap:26px;grid-template-columns:repeat(4,1fr);
+  display:grid;gap:26px;
+  grid-template-columns:repeat(auto-fit, minmax(180px, 280px));
+  justify-content:center;
 }
 .card{position:relative;}
 .card__media{
@@ -530,16 +532,13 @@ p{margin:0 0 1em;}
 /* ====================================================================
    Responsive
    ==================================================================== */
-@media(max-width:1100px){
-  .product-grid{grid-template-columns:repeat(3,1fr);}
-}
 @media(max-width:860px){
   .footer__grid{grid-template-columns:1fr 1fr;}
   .footer__brand{grid-column:1/-1;}
 }
 @media(max-width:749px){
   .section{padding:54px 0;}
-  .product-grid{grid-template-columns:repeat(2,1fr);gap:16px;}
+  .product-grid{gap:16px;}
   .product{grid-template-columns:1fr;}
   .image-text{grid-template-columns:1fr;}
   .image-text--flip .image-text__media{order:0;}
