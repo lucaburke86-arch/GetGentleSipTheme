@@ -125,6 +125,7 @@
     "image_text": {
       "type": "image-with-text",
       "settings": {
+        "image": "shopify://shop_images/science-educational-doodles-featuring-magnifying-glass-atom-test-tube-clean-black-white_87771-32495.avif",
         "flip": false,
         "eyebrow": "The science of a good sip",
         "heading": "How the temperature display works",
