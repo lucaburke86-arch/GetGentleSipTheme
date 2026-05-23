@@ -1,18 +1,8 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
-        "image": "shopify://shop_images/ChatGPT_Image_May_23_2026_04_44_53_AM.png",
         "overlay": 60,
         "height": 92,
         "layout": "left",
@@ -21,95 +11,34 @@
         "heading_accent": "Sip in style.",
         "text": "Smart bottles that show your drink's exact temperature — so every sip is comfortable, never too hot or too cold.",
         "button_label": "Shop bottles",
-        "button_link": "",
         "button2_label": "",
-        "button2_link": "",
         "show_scroll": true
       }
     },
     "marquee": {
       "type": "marquee",
       "blocks": {
-        "m1": {
-          "type": "text",
-          "settings": {
-            "text": "Live temperature display"
-          }
-        },
-        "m2": {
-          "type": "text",
-          "settings": {
-            "text": "Sensitive teeth approved"
-          }
-        },
-        "m3": {
-          "type": "text",
-          "settings": {
-            "text": "Sip in style"
-          }
-        },
-        "m4": {
-          "type": "text",
-          "settings": {
-            "text": "Worldwide shipping"
-          }
-        }
+        "m1": { "type": "text", "settings": { "text": "Live temperature display" } },
+        "m2": { "type": "text", "settings": { "text": "Sensitive teeth approved" } },
+        "m3": { "type": "text", "settings": { "text": "Sip in style" } },
+        "m4": { "type": "text", "settings": { "text": "Worldwide shipping" } }
       },
-      "block_order": [
-        "m1",
-        "m2",
-        "m3",
-        "m4"
-      ],
-      "settings": {}
+      "block_order": ["m1", "m2", "m3", "m4"]
     },
     "benefits": {
       "type": "multicolumn",
-      "blocks": {
-        "b1": {
-          "type": "column",
-          "settings": {
-            "icon": "🌡️",
-            "heading": "Live temperature display",
-            "text": "See your drink's exact temperature at a glance — no guessing."
-          }
-        },
-        "b2": {
-          "type": "column",
-          "settings": {
-            "icon": "🦷",
-            "heading": "Sensitive-teeth friendly",
-            "text": "Catch drinks too hot or cold before they ever reach your teeth."
-          }
-        },
-        "b3": {
-          "type": "column",
-          "settings": {
-            "icon": "✨",
-            "heading": "Sip in style",
-            "text": "Sleek matte black or clean white finishes that turn heads."
-          }
-        },
-        "b4": {
-          "type": "column",
-          "settings": {
-            "icon": "🚚",
-            "heading": "Worldwide shipping",
-            "text": "Carefully packed and shipped fast — US and international."
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2",
-        "b3",
-        "b4"
-      ],
       "settings": {
         "eyebrow": "Why GetGentleSip",
         "heading": "Built for comfortable sipping",
         "subheading": "Every detail designed around the way you drink."
-      }
+      },
+      "blocks": {
+        "b1": { "type": "column", "settings": { "icon": "🌡️", "heading": "Live temperature display", "text": "See your drink's exact temperature at a glance — no guessing." } },
+        "b2": { "type": "column", "settings": { "icon": "🦷", "heading": "Sensitive-teeth friendly", "text": "Catch drinks too hot or cold before they ever reach your teeth." } },
+        "b3": { "type": "column", "settings": { "icon": "✨", "heading": "Sip in style", "text": "Sleek matte black or clean white finishes that turn heads." } },
+        "b4": { "type": "column", "settings": { "icon": "🚚", "heading": "Worldwide shipping", "text": "Carefully packed and shipped fast — US and international." } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"]
     },
     "featured": {
       "type": "featured-collection",
@@ -117,7 +46,6 @@
         "eyebrow": "Shop the drop",
         "heading": "Best sellers",
         "subheading": "The bottles everyone's sipping from.",
-        "collection": "frontpage",
         "limit": 8,
         "show_view_all": true
       }
@@ -125,13 +53,11 @@
     "image_text": {
       "type": "image-with-text",
       "settings": {
-        "image": "shopify://shop_images/science-educational-doodles-featuring-magnifying-glass-atom-test-tube-clean-black-white_87771-32495-removebg-preview_dd1ffa4f-f87b-4a5a-b093-a1b8f27c5a90.png",
         "flip": false,
         "eyebrow": "The science of a good sip",
         "heading": "How the temperature display works",
         "text": "<p>The bottle's smart band reacts to your drink and shows the temperature instantly. No more guessing, no more burnt tongues or sensitive-teeth shock — just comfortable sipping every time.</p>",
-        "button_label": "Shop now",
-        "button_link": ""
+        "button_label": "Shop now"
       }
     },
     "newsletter": {
@@ -145,12 +71,5 @@
       }
     }
   },
-  "order": [
-    "hero",
-    "marquee",
-    "benefits",
-    "featured",
-    "image_text",
-    "newsletter"
-  ]
+  "order": ["hero", "marquee", "benefits", "featured", "image_text", "newsletter"]
 }
