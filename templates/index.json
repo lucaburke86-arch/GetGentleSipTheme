@@ -12,7 +12,6 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "image": "shopify://shop_images/301b2784-162c-46eb-9add-44f400774991.png",
         "overlay": 60,
         "height": 85,
         "layout": "left",
