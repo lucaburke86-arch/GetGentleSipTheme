@@ -574,4 +574,6 @@ p{margin:0 0 1em;}
   .hero__inner{padding-block:34px 110px;}
   .hero__overlay{background:linear-gradient(to bottom,rgba(0,0,0,1) 0%,rgba(0,0,0,.82) 30%,rgba(0,0,0,.3) 62%,rgba(0,0,0,0) 90%);}
   .hero__bg img{object-position:center 75%;}
+  /* Pin the CTA button to the bottom so it sits under the temperature display */
+  .hero__actions{position:absolute;left:28px;bottom:68px;z-index:3;justify-content:flex-start;}
 }
