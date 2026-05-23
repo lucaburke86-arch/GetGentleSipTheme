@@ -12,6 +12,7 @@
     "hero": {
       "type": "hero",
       "settings": {
+        "image": "shopify://shop_images/ChatGPT_Image_May_23_2026_04_44_53_AM.png",
         "overlay": 60,
         "height": 92,
         "layout": "left",
