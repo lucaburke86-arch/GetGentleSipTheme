@@ -569,5 +569,9 @@ p{margin:0 0 1em;}
   .nav-overlay.is-open{opacity:1;visibility:visible;}
   .cart__row{grid-template-columns:80px 1fr;}
   .cart__row img{width:80px;height:80px;}
-  .hero__inner{padding-block:60px;}
+  /* Mobile hero: content sits at top, image's bottom (with temp display) stays visible */
+  .hero{align-items:flex-start;}
+  .hero__inner{padding-block:34px 110px;}
+  .hero__overlay{background:linear-gradient(to bottom,rgba(0,0,0,1) 0%,rgba(0,0,0,.82) 30%,rgba(0,0,0,.3) 62%,rgba(0,0,0,0) 90%);}
+  .hero__bg img{object-position:center 75%;}
 }
