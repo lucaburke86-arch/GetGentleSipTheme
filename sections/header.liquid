@@ -51,6 +51,28 @@
   </div>
 </header>
 
+<script>
+  /* Move the mobile nav out of the sticky/backdrop-filtered header so position:fixed
+     escapes any containing-block formed by ancestor filter/transform/sticky contexts.
+     The original <nav> stays in the header for desktop; we clone it on mobile widths. */
+  (function () {
+    var mq = window.matchMedia('(max-width: 749px)');
+    var nav = document.querySelector('.site-header [data-menu]');
+    if (!nav) return;
+    var placeholder = document.createComment('header-nav-placeholder');
+    nav.parentNode.insertBefore(placeholder, nav);
+    function apply() {
+      if (mq.matches) {
+        if (nav.parentNode !== document.body) document.body.appendChild(nav);
+      } else {
+        if (nav.parentNode !== placeholder.parentNode) placeholder.parentNode.insertBefore(nav, placeholder);
+      }
+    }
+    apply();
+    mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply);
+  })();
+</script>
+
 {% schema %}
 {
   "name": "Header",

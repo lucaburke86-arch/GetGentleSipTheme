@@ -547,6 +547,9 @@ p{margin:0 0 1em;}
   .newsletter form,.password-page form{flex-direction:column;}
   .header__toggle{display:block;order:-1;}
   .header__logo{position:absolute;left:50%;transform:translateX(-50%);}
+  /* backdrop-filter creates a containing block for position:fixed descendants,
+     which clips the mobile drawer to the header. Disable it on mobile. */
+  .site-header{backdrop-filter:none;-webkit-backdrop-filter:none;background:#fff;}
   .header__nav{
     position:fixed;top:0;left:0;bottom:0;width:84%;max-width:340px;
     background:#fff;z-index:80;padding:90px 28px 28px;
