@@ -116,7 +116,7 @@
         "eyebrow": "Shop the drop",
         "heading": "Best sellers",
         "subheading": "The bottles everyone's sipping from.",
-        "collection": "best-sellers",
+        "collection": "frontpage",
         "limit": 8,
         "show_view_all": true
       }
